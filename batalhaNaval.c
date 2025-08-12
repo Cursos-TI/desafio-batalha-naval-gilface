@@ -57,33 +57,7 @@ int main() {
     int linha_h = 2, coluna_h = 4; // Navio horizontal começa na linha 2, coluna 4
     int linha_v = 6, coluna_v = 1; // Navio vertical começa na linha 6, coluna 1
 
-    // Validação: garantir que os navios estão dentro dos limites do tabuleiro
-    if (coluna_h + TAM_NAVIO > TAM_TABULEIRO || linha_h >= TAM_TABULEIRO) {
-        printf("Erro: Navio horizontal fora dos limites do tabuleiro.\n");
-        return 1;
-    }
-    if (linha_v + TAM_NAVIO > TAM_TABULEIRO || coluna_v >= TAM_TABULEIRO) {
-        printf("Erro: Navio vertical fora dos limites do tabuleiro.\n");
-        return 1;
-    }
-
-    // Validação: garantir que não há sobreposição
-    int sobreposicao = 0;
-    for (int i = 0; i < TAM_NAVIO; i++) {
-        if (linha_h == linha_v + i && coluna_h + i == coluna_v) {
-            sobreposicao = 1;
-            break;
-        }
-        if (linha_v + i == linha_h && coluna_v == coluna_h + i) {
-            sobreposicao = 1;
-            break;
-        }
-    }
-    if (sobreposicao) {
-        printf("Erro: Sobreposição de navios detectada.\n");
-        return 1;
-    }
-
+  
     // Posiciona o navio horizontal no tabuleiro
     for (int i = 0; i < TAM_NAVIO; i++) {
         tabuleiro[linha_h][coluna_h + i] = navio_horizontal[i];
